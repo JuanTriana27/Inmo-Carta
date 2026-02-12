@@ -93,14 +93,15 @@
 /* Base botones */
 .btn-whatsapp,
 .btn-share {
-    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     padding: 0.9rem 1.5rem;
     border-radius: 8px;
     font-weight: 500;
     text-decoration: none;
+    box-sizing: border-box;
     border: none;
     cursor: pointer;
     transition: 0.3s ease;
