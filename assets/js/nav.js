@@ -46,4 +46,45 @@ function initNav() {
         });
 
     }
+
+    /* ================= SCROLL BEHAVIOR ================= */
+
+    let lastScroll = 0;
+    let ticking = false;
+
+    window.addEventListener("scroll", () => {
+
+        const currentScroll = window.pageYOffset;
+
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+
+                /* ---- SCROLL DOWN ---- */
+                if (currentScroll > lastScroll && currentScroll > 10) {
+                    header.classList.add("hidden");
+                }
+
+                /* ---- SCROLL UP ---- */
+                else if (currentScroll < lastScroll) {
+                    header.classList.remove("hidden");
+                    header.classList.add("scrolled");
+                    header.classList.remove("transparent");
+                }
+
+                /* ---- TOP OF PAGE ---- */
+                if (currentScroll <= 0) {
+                    header.classList.remove("scrolled");
+                    header.classList.add("transparent");
+                }
+
+                lastScroll = currentScroll;
+                ticking = false;
+
+            });
+
+            ticking = true;
+        }
+
+    });
+
 }
