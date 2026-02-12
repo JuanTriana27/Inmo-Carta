@@ -34,8 +34,6 @@ body {
 /* ================= 3. COMPONENTES ==================== */
 /* ===================================================== */
 
-/* ----- IZQUIERDA DESKTOP ----- */
-
 .nav-left {
     display: flex;
     align-items: center;
@@ -60,9 +58,10 @@ body {
     cursor: pointer;
     font-weight: 500;
     transition: color 0.3s ease;
+    position: relative;
 }
 
-/* ----- DERECHA DESKTOP ----- */
+/* ----- DERECHA ----- */
 
 .nav-right {
     display: flex;
@@ -84,8 +83,6 @@ body {
     transition: color 0.3s ease;
 }
 
-/* ----- TOGGLE ----- */
-
 .toggle {
     display: none;
     font-size: 1.8rem;
@@ -96,8 +93,6 @@ body {
     transition: color 0.3s ease;
 }
 
-/* ----- NAV MOBILE (base oculto) ----- */
-
 .nav-mobile {
     display: none;
 }
@@ -106,25 +101,27 @@ body {
 /* ===================== 4. ESTADOS ==================== */
 /* ===================================================== */
 
-/* Estado inicial */
 .header.transparent {
     background: transparent;
 }
 
-/* Estado con scroll */
 .header.scrolled {
     background: #ffffff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Estado oculto */
 .header.hidden {
     transform: translateY(-100%);
 }
 
-/* ----- COLORES DINÁMICOS ----- */
+/* 👇 NUEVO ESTADO CUANDO MEGA MENÚ ESTÁ ACTIVO */
+.header.mega-active {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-/* Transparente → blanco */
+/* COLORES DINÁMICOS */
+
 .header.transparent .logo,
 .header.transparent .nav-links li,
 .header.transparent .menu i,
@@ -134,29 +131,145 @@ body {
     color: #ffffff;
 }
 
-/* Scrolled → negro */
 .header.scrolled .logo,
 .header.scrolled .nav-links li,
 .header.scrolled .menu i,
 .header.scrolled .toggle,
 .header.scrolled .nav-mobile .logo,
-.header.scrolled .nav-mobile i {
-    color: #000000;
+.header.scrolled .nav-mobile i,
+.header.mega-active .logo,
+.header.mega-active .nav-links li,
+.header.mega-active .menu i,
+.header.mega-active .toggle,
+.header.mega-active .nav-mobile .logo,
+.header.mega-active .nav-mobile i {
+    color: #000000 !important;
 }
 
 /* ===================================================== */
-/* ===================== 5. RESPONSIVE ================= */
+/* ===================== MEGA MENU ===================== */
+/* ===================================================== */
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown-toggle i {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
+/* Barra blanca completa */
+.mega-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+    z-index: 999;
+}   
+
+/* Contenedor full width */
+.mega-content {
+    display: flex;
+    width: 100%;
+}
+
+/* IZQUIERDA */
+.mega-left {
+    padding-left: 6rem;
+    /* solo texto tiene margen */
+    min-width: 300px;
+}
+
+.mega-left h4 {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: #777;
+    margin-bottom: 1.5rem;
+}
+
+.mega-left a {
+    display: block;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #000;
+    transition: opacity 0.2s ease;
+}
+
+.mega-left a:hover {
+    opacity: 0.6;
+}
+
+/* DERECHA imágenes */
+.mega-right {
+    display: flex;
+    flex: 1;
+    gap: 2px;
+    /* 👈 separación exacta */
+}
+
+.mega-right {
+    display: flex;
+    flex: 1;
+    gap: 2px;
+}
+
+/* Wrapper que recorta */
+.mega-img {
+    flex: 1;
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Imagen */
+.mega-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(.25,.46,.45,.94);
+}
+
+/* Zoom interno real */
+.mega-img:hover img {
+    transform: scale(1.15);
+}
+
+
+/* Mostrar menú */
+.dropdown:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Rotar flecha */
+.dropdown:hover .dropdown-toggle i {
+    transform: rotate(180deg);
+}
+
+
+/* ===================================================== */
+/* ===================== RESPONSIVE ==================== */
 /* ===================================================== */
 
 @media (max-width: 768px) {
 
-    /* Ocultar escritorio */
     .nav-left,
     .nav-right {
         display: none;
     }
 
-    /* Activar mobile */
     .nav-mobile {
         display: grid;
         grid-template-columns: auto auto 1fr auto;
@@ -165,7 +278,6 @@ body {
         width: 100%;
     }
 
-    /* Posicionamiento */
     .nav-mobile .toggle {
         grid-column: 1;
         justify-self: start;
@@ -190,7 +302,6 @@ body {
         font-size: 1.1rem;
     }
 
-    /* Menú desplegable */
     .menu {
         position: absolute;
         top: 70px;
@@ -206,8 +317,11 @@ body {
         display: flex;
     }
 
-    /* Fondo menú cuando scrolled */
     .header.scrolled .menu {
         background: #ffffff;
+    }
+
+    .mega-menu {
+        display: none;
     }
 }

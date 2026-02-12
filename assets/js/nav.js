@@ -19,12 +19,31 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 function initNav() {
+
     const toggleBtn = document.getElementById("toggleBtn");
     const menu = document.getElementById("menu");
+    const dropdown = document.querySelector(".dropdown");
+    const header = document.querySelector(".header");
+
+    /* ================= MOBILE TOGGLE ================= */
 
     if (toggleBtn && menu) {
         toggleBtn.addEventListener("click", () => {
             menu.classList.toggle("active");
         });
+    }
+
+    /* ================= MEGA MENU HEADER EFFECT ================= */
+
+    if (dropdown && header) {
+
+        dropdown.addEventListener("mouseenter", () => {
+            header.classList.add("mega-active");
+        });
+
+        dropdown.addEventListener("mouseleave", () => {
+            header.classList.remove("mega-active");
+        });
+
     }
 }
