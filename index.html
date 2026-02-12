@@ -11,6 +11,9 @@
     <!-- HERO CSS -->
     <link rel="stylesheet" href="assets/css/hero.css">
 
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+
     <!-- FOOTER CSS -->
     <link rel="stylesheet" href="assets/css/footer.css">
 
@@ -35,7 +38,97 @@
 
     <!-- CONTENIDO PRINCIPAL -->
     <main>
-        hola
+
+        <!-- 1️⃣ NOVEDADES -->
+        <section class="section novedades">
+            <div class="container novedades-header">
+                <div class="novedades-title">
+                    <h2>NOVEDADES</h2>
+                    <a href="#" class="circle-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- 2️⃣ PROPIEDADES -->
+        <section class="section propiedades">
+            <div class="cards-wrapper">
+                <div class="cards-scroll">
+
+                    <!-- CARD -->
+                    <div class="property-card">
+                        <div class="card-image">
+                            <img src="assets/img/Casa1.jpeg" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h3>Casa Moderna</h3>
+                            <p>3 habitaciones · 2 baños · 220m²</p>
+                            <span class="price">$450.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Duplica las que necesites -->
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 3️⃣ PUBLICAR PROPIEDAD (ESTILO PROFESIONAL) -->
+        <section class="section publicar">
+            <div class="form-container">
+
+                <h2>VENDE TU PROPIEDAD CON NOSOTROS</h2>
+
+                <p class="form-description">
+                    Si quieres que gestionemos la venta de tu propiedad, completa el siguiente formulario
+                    y nos pondremos en contacto contigo.
+                </p>
+
+                <form class="publish-form">
+
+                    <div class="form-row two">
+                        <input type="text" placeholder="Nombre *" required>
+                        <input type="text" placeholder="Apellidos *" required>
+                    </div>
+
+                    <input type="email" placeholder="Correo Electrónico *" required>
+                    <input type="tel" placeholder="Teléfono *" required>
+
+                    <div class="form-row two">
+                        <input type="text" placeholder="Tipo de propiedad *" required>
+                        <input type="number" placeholder="Año *" required>
+                    </div>
+
+                    <div class="file-upload-box">
+                        <label>Imágenes de la Propiedad *</label>
+                        <div class="upload-area">
+                            <p>Elige el archivo o arrástralo aquí</p>
+                            <small>Formatos soportados: JPG, JPEG, PNG</small>
+                            <input type="file" multiple>
+                        </div>
+                    </div>
+
+                    <input type="text" placeholder="Localidad *" required>
+                    <input type="number" placeholder="Precio estimado *" required>
+
+                    <div class="checkbox">
+                        <input type="checkbox" required>
+                        <label>
+                            He leído y acepto las condiciones y la política de privacidad *
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Enviar</button>
+
+                </form>
+
+            </div>
+        </section>
+
     </main>
 
     <div data-component="footer"></div>
