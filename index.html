@@ -8,6 +8,9 @@
     <!-- NAV CSS -->
     <link rel="stylesheet" href="assets/css/nav.css">
 
+    <!-- HERO CSS -->
+    <link rel="stylesheet" href="assets/css/hero.css">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -16,23 +19,28 @@
 
 <body>
 
+    <!-- NAV (componente cargado dinámicamente o directo) -->
     <div data-component="nav"></div>
 
-    <!-- HERO -->
+    <!-- HERO CON IMAGEN -->
     <section class="hero">
         <div class="hero-overlay">
-            <h1></h1>
+
+            <!-- Puedes cambiar el texto o dejarlo vacío como tenías -->
         </div>
     </section>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <main>
         <section style="height: 1000px; padding: 50px;">
-            <h2>Contenido de prueba</h2>
-            <p>Scroll para ver el efecto del navbar.</p>
+            <h2>Propiedades destacadas</h2>
+            <p>Aquí irá el listado de inmuebles.</p>
+            <p style="margin-top: 2rem;">Sigue haciendo scroll para ver el efecto del navbar.</p>
         </section>
     </main>
 
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/nav.js"></script>
+    
 </body>
 
 </html>

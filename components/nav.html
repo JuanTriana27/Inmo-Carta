@@ -1,30 +1,33 @@
-    <header class="header">
-        <nav class="nav">
+<header class="header transparent">
 
-            <!-- IZQUIERDA -->
-            <div class="nav-left">
-                <div class="logo">INMOBILIARIA</div>
+    <nav class="nav">
 
-                <ul class="nav-links">
-                    <li>Casas</li>
-                    <li>Contacto</li>
-                </ul>
-            </div>
+        <!-- IZQUIERDA (escritorio) -->
+        <div class="nav-left">
+            <div class="logo">INMOBILIARIA</div>
+            <ul class="nav-links">
+                <li>Casas</li>
+                <li>Contacto</li>
+            </ul>
+        </div>
 
-            <!-- DERECHA -->
-            <div class="nav-right">
+        <!-- DERECHA (escritorio) -->
+        <div class="nav-right">
+            <ul class="menu" id="menu">
+                <li><i class="fas fa-search"></i></li>
+                <li><i class="fas fa-user"></i></li>
+                <li><i class="fas fa-shopping-cart"></i></li>
+            </ul>
+            <button class="toggle" id="toggleBtn">☰</button>
+        </div>
 
-                <ul class="menu" id="menu">
-                    <li><i class="fas fa-search"></i></li>
-                    <li><i class="fas fa-user"></i></li>
-                    <li><i class="fas fa-shopping-cart"></i></li>
-                </ul>
+        <!-- VERSIÓN MÓVIL (sin id duplicado) -->
+        <div class="nav-mobile">
+            <button class="toggle">☰</button> <!-- SIN ID -->
+            <i class="fas fa-search mobile-search"></i>
+            <div class="logo">INMOBILIARIA</div>
+            <i class="fas fa-shopping-cart mobile-cart"></i>
+        </div>
 
-                <button class="toggle" id="toggleBtn">
-                    ☰
-                </button>
-
-            </div>
-
-        </nav>
-    </header>
+    </nav>
+</header>
