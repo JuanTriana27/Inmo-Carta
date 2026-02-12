@@ -3,8 +3,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     const navContainer = document.querySelector('[data-component="nav"]');
     if (!navContainer) return;
 
+    const basePath = window.location.pathname.includes("components")
+        ? "../"
+        : "";
+
     try {
-        const response = await fetch("components/nav.html");
+        const response = await fetch(`${basePath}components/nav.html`);
         if (!response.ok) throw new Error("No se encontró nav.html");
 
         const data = await response.text();

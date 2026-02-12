@@ -44,6 +44,7 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     transition: color 0.3s ease;
+    cursor: pointer;
 }
 
 .nav-links {
