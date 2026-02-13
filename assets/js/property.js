@@ -6,13 +6,7 @@ const propiedades = {
         titulo: "Casa Old",
         precio: "$450.000",
         imagen: "../assets/img/Casa1.jpeg",
-        whatsapp: "573000000001"
-    },
-    2: {
-        titulo: "Casa Moderna",
-        precio: "$520.000",
-        imagen: "../assets/img/Casa2.avif",
-        whatsapp: "573000000002"
+        whatsapp: "573008412521"
     }
 };
 
