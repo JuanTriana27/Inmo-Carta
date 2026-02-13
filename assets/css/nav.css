@@ -115,7 +115,6 @@ body {
     transform: translateY(-100%);
 }
 
-/* 👇 NUEVO ESTADO CUANDO MEGA MENÚ ESTÁ ACTIVO */
 .header.mega-active {
     background: #ffffff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -162,7 +161,6 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* Barra blanca completa */
 .mega-menu {
     position: fixed;
     top: 70px;
@@ -175,18 +173,15 @@ body {
     transition: all 0.3s ease;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
     z-index: 999;
-}   
+}
 
-/* Contenedor full width */
 .mega-content {
     display: flex;
     width: 100%;
 }
 
-/* IZQUIERDA */
 .mega-left {
-    padding-left: 6rem;
-    /* solo texto tiene margen */
+    padding-left: 3rem;
     min-width: 300px;
 }
 
@@ -210,21 +205,12 @@ body {
     opacity: 0.6;
 }
 
-/* DERECHA imágenes */
-.mega-right {
-    display: flex;
-    flex: 1;
-    gap: 2px;
-    /* 👈 separación exacta */
-}
-
 .mega-right {
     display: flex;
     flex: 1;
     gap: 2px;
 }
 
-/* Wrapper que recorta */
 .mega-img {
     flex: 1;
     height: 280px;
@@ -232,33 +218,39 @@ body {
     position: relative;
 }
 
-/* Imagen */
 .mega-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.8s cubic-bezier(.25,.46,.45,.94);
+    transition: transform 0.8s cubic-bezier(.25, .46, .45, .94);
 }
 
-/* Zoom interno real */
 .mega-img:hover img {
     transform: scale(1.15);
 }
 
-
-/* Mostrar menú */
 .dropdown:hover .mega-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-/* Rotar flecha */
 .dropdown:hover .dropdown-toggle i {
     transform: rotate(180deg);
 }
 
+/* ===================================================== */
+/* ========== COMPORTAMIENTO ESCRITORIO (≥769px) ======= */
+/* ===================================================== */
+
+@media (min-width: 769px) {
+
+    /* Ocultar el texto del menú en escritorio */
+    #menu .menu-text {
+        display: none;
+    }
+}
 
 /* ===================================================== */
 /* ===================== RESPONSIVE ==================== */
@@ -266,8 +258,17 @@ body {
 
 @media (max-width: 768px) {
 
-    .nav-left,
+    .nav-left {
+        display: none;
+    }
+
     .nav-right {
+        display: block;
+        height: 0;
+        overflow: visible;
+    }
+
+    .nav-right .toggle {
         display: none;
     }
 
@@ -275,7 +276,7 @@ body {
         display: grid;
         grid-template-columns: auto auto 1fr auto;
         align-items: center;
-        gap: 0.75rem;
+        gap: 2rem;
         width: 100%;
     }
 
@@ -303,26 +304,159 @@ body {
         font-size: 1.1rem;
     }
 
+    /* ===== MENÚ LATERAL IZQUIERDO ===== */
     .menu {
-        position: absolute;
-        top: 70px;
-        right: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 70%;
+        height: 100vh;
+        background: #ffffff;
         flex-direction: column;
-        width: 200px;
-        padding: 1rem;
-        display: none;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .menu.active {
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 80px 2rem 2rem;
+        margin: 0;
+        list-style: none;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1002;
         display: flex;
     }
 
-    .header.scrolled .menu {
-        background: #ffffff;
+    .menu.active {
+        transform: translateX(0);
+    }
+
+    /* Mostrar texto del menú en móvil */
+    #menu .menu-text {
+        display: inline;
+        margin-left: 0.5rem;
+        /* separación entre icono y texto */
+    }
+
+    /* Ocultar el ítem de la lupa en móvil (primer li) */
+    #menu li:first-child {
+        display: none;
+    }
+
+    /* Forzar color negro en TODOS los elementos del menú móvil */
+    #menu,
+    #menu * {
+        color: #000000 !important;
+    }
+
+    .menu li {
+        width: 100%;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 1.1rem;
+    }
+
+    .menu i {
+        font-size: 1.3rem;
+        width: 24px;
+        text-align: center;
+    }
+
+    /* Overlay oscuro */
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1001;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .menu-overlay.active {
+        display: block;
+        opacity: 1;
     }
 
     .mega-menu {
         display: none;
     }
+}
+
+/* ===================================================== */
+/* =================== SEARCH BAR ====================== */
+/* ===================================================== */
+
+.search-bar {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(5px);
+    padding: 1.2rem 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    display: none;
+    align-items: center;
+    gap: 1rem;
+    z-index: 999;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+    transform: translateY(-10px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.search-bar.active {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 40px;
+    background: #f5f5f5;
+    font-size: 1rem;
+    outline: none;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.search-bar input:focus {
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+.search-bar i {
+    cursor: pointer;
+    font-size: 1.3rem;
+    color: #666;
+    transition: color 0.2s;
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+.search-bar i:hover {
+    color: #000;
+    background: #f0f0f0;
+}
+
+/* Lupa dentro del input (opcional) */
+.search-bar::before {
+    content: '\f002';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 2.8rem;
+    color: #999;
+    pointer-events: none;
+}
+
+.search-bar input {
+    padding-left: 3rem;
 }

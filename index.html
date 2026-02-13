@@ -56,7 +56,33 @@
         <!-- PROPIEDADES -->
         <section class="section propiedades">
             <div class="cards-wrapper">
-                <div class="cards-scroll">
+                <div class="cards-scroll" id="propiedades-container">
+
+                    <!-- <script>
+                        fetch('http://localhost:3000/api/propiedades')
+                            .then(res => res.json())
+                            .then(propiedades => {
+                                const container = document.getElementById('propiedades-container');
+                                if (!container) return;
+                                container.innerHTML = '';
+                                propiedades.forEach(prop => {
+                                    const card = `
+                    <a href="components/property.html?id=${prop.id}" class="property-link">
+                        <div class="property-card">
+                            <div class="card-image">
+                                <img src="assets/img/${prop.imagen}" alt="">
+                            </div>
+                            <div class="card-body">
+                                <h3>${prop.titulo}</h3>
+                                <span class="price">$${prop.precio.toLocaleString()}</span>
+                            </div>
+                        </div>
+                    </a>
+                `;
+                                    container.innerHTML += card;
+                                });
+                            });
+                    </script> -->
 
                     <!-- CARD -->
                     <a href="components/property.html?id=1" class="property-link"

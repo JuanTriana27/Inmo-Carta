@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+
+<body>
+    <div data-component="nav"></div>
+    <main style="padding: 2rem;">
+        <!-- SECCIÓN LOGIN -->
+        <div id="login-section" style="max-width: 400px; margin: 0 auto;">
+            <h2>Acceso Administrador</h2>
+            <form id="login-form">
+                <input type="email" id="email" placeholder="Email" required
+                    style="width:100%; padding:0.5rem; margin-bottom:1rem;">
+                <input type="password" id="password" placeholder="Contraseña" required
+                    style="width:100%; padding:0.5rem; margin-bottom:1rem;">
+                <button type="submit" style="padding:0.5rem 1rem;">Entrar</button>
+            </form>
+        </div>
+
+        <!-- SECCIÓN PANEL ADMIN (oculta al inicio) -->
+        <div id="admin-panel" style="display: none;">
+            <!-- Cabecera con botón de cerrar sesión -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h2>Agregar nueva propiedad</h2>
+                <button id="logout-btn"
+                    style="background: #dc3545; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                </button>
+            </div>
+
+            <!-- Formulario para agregar propiedad -->
+            <form id="property-form" enctype="multipart/form-data">
+                <div class="form-row two">
+                    <input type="text" name="titulo" placeholder="Título *" required>
+                    <input type="number" name="precio" placeholder="Precio *" step="0.01" required>
+                </div>
+                <div class="form-row two">
+                    <input type="number" name="habitaciones" placeholder="Habitaciones">
+                    <input type="number" name="banos" placeholder="Baños">
+                </div>
+                <div class="form-row two">
+                    <input type="number" name="metros" placeholder="Metros cuadrados">
+                    <input type="file" name="imagenes" accept="image/*">
+                </div>
+                <textarea name="descripcion" placeholder="Descripción" rows="4"></textarea>
+                <button type="submit" class="submit-btn">Guardar propiedad</button>
+            </form>
+            <div id="result-message"></div>
+        </div>
+    </main>
+
+    <script>
+        // Verificar si ya está logueado
+        const token = localStorage.getItem('adminToken');
+        if (token) {
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('admin-panel').style.display = 'block';
+        }
+
+        // LOGIN
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('http://localhost:3000/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            const data = await response.json();
+            if (data.success) {
+                localStorage.setItem('adminToken', data.adminId);
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'block';
+            } else {
+                alert('Credenciales incorrectas');
+            }
+        });
+
+        // AGREGAR PROPIEDAD
+        document.getElementById('property-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const response = await fetch('http://localhost:3000/api/propiedades', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            if (result.success) {
+                document.getElementById('result-message').innerHTML = '<p style="color:green;">Propiedad guardada correctamente</p>';
+                e.target.reset();
+            } else {
+                document.getElementById('result-message').innerHTML = '<p style="color:red;">Error al guardar</p>';
+            }
+        });
+
+        // CERRAR SESIÓN
+        document.getElementById('logout-btn').addEventListener('click', function () {
+            localStorage.removeItem('adminToken');
+            document.getElementById('login-section').style.display = 'block';
+            document.getElementById('admin-panel').style.display = 'none';
+            document.getElementById('property-form').reset();
+            document.getElementById('result-message').innerHTML = '';
+        });
+    </script>
+</body>
+
+</html>

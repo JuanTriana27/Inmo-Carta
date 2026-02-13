@@ -1,10 +1,11 @@
 <header class="header transparent">
-
     <nav class="nav">
 
         <!-- IZQUIERDA (escritorio) -->
         <div class="nav-left">
-            <div class="logo"><a href="/index.html" style="text-decoration: none; color: inherit;">INMOBILIARIA</a></div>
+            <div class="logo">
+                <a href="/index.html" style="text-decoration: none; color: inherit;">INMOBILIARIA</a>
+            </div>
 
             <ul class="nav-links">
                 <li class="dropdown">
@@ -14,7 +15,6 @@
 
                     <div class="mega-menu">
                         <div class="mega-content">
-
                             <!-- IZQUIERDA -->
                             <div class="mega-left">
                                 <h4>COLECCIONES DESTACADAS</h4>
@@ -35,8 +35,6 @@
                                     <img src="/assets/img/Casa3.jpg" alt="">
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </li>
@@ -44,17 +42,15 @@
                 <li>
                     <a href="/index.html#contacto" style="text-decoration: none; color: inherit;">Contacto</a>
                 </li>
-
             </ul>
-
         </div>
 
         <!-- DERECHA (escritorio) -->
         <div class="nav-right">
             <ul class="menu" id="menu">
-                <li><i class="fas fa-search"></i></li>
-                <li><i class="fas fa-user"></i></li>
-                <li><i class="fas fa-shopping-cart"></i></li>
+                <li><i class="fas fa-search"></i><span class="menu-text">Buscar</span></li>
+                <li><i class="fas fa-user"></i><span class="menu-text">Perfil</span></li>
+                <li><i class="fas fa-shopping-cart"></i><span class="menu-text">Carrito</span></li>
             </ul>
             <button class="toggle" id="toggleBtn">☰</button>
         </div>
@@ -68,4 +64,13 @@
         </div>
 
     </nav>
+
+    <!-- Barra de búsqueda -->
+    <div class="search-bar" id="searchBar">
+        <input type="text" placeholder="Buscar...">
+        <i class="fas fa-times" id="closeSearch" style="cursor: pointer;"></i>
+    </div>
+
+    <!-- Overlay para menú móvil -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 </header>
