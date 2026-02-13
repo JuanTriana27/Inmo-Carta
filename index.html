@@ -25,18 +25,14 @@
 
 <body>
 
-    <!-- NAV (componente cargado dinámicamente) -->
+    <!-- NAV -->
     <div data-component="nav"></div>
 
-    <!-- HERO CON IMAGEN -->
+    <!-- HERO -->
     <section class="hero">
-        <div class="hero-overlay">
-
-            <!-- Contenido dentro de la imangen -->
-        </div>
+        <div class="hero-overlay"></div>
     </section>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <main>
 
         <!-- NOVEDADES -->
@@ -44,47 +40,15 @@
             <div class="container novedades-header">
                 <div class="novedades-title">
                     <h2>NOVEDADES</h2>
-                    <a href="#" class="circle-btn">
-                        <i class="fas fa-chevron-right"></i>
-                    </a>
+                    <a href="#" class="circle-btn"><i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
         </section>
-
-
 
         <!-- PROPIEDADES -->
         <section class="section propiedades">
             <div class="cards-wrapper">
                 <div class="cards-scroll" id="propiedades-container">
-
-                    <!-- <script>
-                        fetch('http://localhost:3000/api/propiedades')
-                            .then(res => res.json())
-                            .then(propiedades => {
-                                const container = document.getElementById('propiedades-container');
-                                if (!container) return;
-                                container.innerHTML = '';
-                                propiedades.forEach(prop => {
-                                    const card = `
-                    <a href="components/property.html?id=${prop.id}" class="property-link">
-                        <div class="property-card">
-                            <div class="card-image">
-                                <img src="assets/img/${prop.imagen}" alt="">
-                            </div>
-                            <div class="card-body">
-                                <h3>${prop.titulo}</h3>
-                                <span class="price">$${prop.precio.toLocaleString()}</span>
-                            </div>
-                        </div>
-                    </a>
-                `;
-                                    container.innerHTML += card;
-                                });
-                            });
-                    </script> -->
-
-                    <!-- CARD -->
                     <a href="components/property.html?id=1" class="property-link"
                         style="text-decoration: none; color: inherit;">
                         <div class="property-card">
@@ -97,13 +61,11 @@
                             </div>
                         </div>
                     </a>
-
                 </div>
             </div>
         </section>
 
-
-        <!-- PUBLICAR PROPIEDAD -->
+        <!-- PUBLICAR PROPIEDAD - FORMULARIO DE GHL (REEMPLAZADO) -->
         <section id="contacto" class="section publicar">
             <div class="form-container">
 
@@ -114,43 +76,20 @@
                     y nos pondremos en contacto contigo.
                 </p>
 
-                <form class="publish-form">
-
-                    <div class="form-row two">
-                        <input type="text" placeholder="Nombre *" required>
-                        <input type="text" placeholder="Apellidos *" required>
-                    </div>
-
-                    <input type="email" placeholder="Correo Electrónico *" required>
-                    <input type="tel" placeholder="Teléfono *" required>
-
-                    <div class="form-row two">
-                        <input type="text" placeholder="Tipo de propiedad *" required>
-                        <input type="number" placeholder="Año *" required>
-                    </div>
-
-                    <div class="file-upload-box">
-                        <label>Imágenes de la Propiedad *</label>
-                        <div class="upload-area">
-                            <p>Elige el archivo o arrástralo aquí</p>
-                            <small>Formatos soportados: JPG, JPEG, PNG</small>
-                            <input type="file" multiple>
-                        </div>
-                    </div>
-
-                    <input type="text" placeholder="Localidad *" required>
-                    <input type="number" placeholder="Precio estimado *" required>
-
-                    <div class="checkbox">
-                        <input type="checkbox" required>
-                        <label>
-                            He leído y acepto las condiciones y la política de privacidad *
-                        </label>
-                    </div>
-
-                    <button type="submit" class="submit-btn">Enviar</button>
-
-                </form>
+                <!-- CÓDIGO EMBED DE GHL (FORMULARIO DE VENTA) -->
+                <!-- IMPORTANTE: Ajusta la altura según necesites -->
+                <iframe src="https://api.leadconnectorhq.com/widget/form/gZeXUzINaRdw5ymkKrgS"
+                    style="width:100%; height:700px; border:none; border-radius:3px" id="inline-gZeXUzINaRdw5ymkKrgS"
+                    data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
+                    data-activation-type="alwaysActivated" data-activation-value=""
+                    data-deactivation-type="neverDeactivate" data-deactivation-value=""
+                    data-form-name="Newsletter Landing" <!-- Esto deberías cambiarlo en GHL, pero no afecta -->
+                    data-height="858"
+                    data-layout-iframe-id="inline-gZeXUzINaRdw5ymkKrgS"
+                    data-form-id="gZeXUzINaRdw5ymkKrgS"
+                    title="Formulario Venta Propiedad"
+                    ></iframe>
+                <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 
             </div>
         </section>
@@ -162,26 +101,28 @@
             </div>
         </section>
 
-        <!-- NEWSLETTER -->
+        <!-- NEWSLETTER (INTACTO) -->
         <section class="section newsletter">
             <div class="container newsletter-container">
-                <div class="newsletter-img"> <img src="assets/img/Casa2.avif" alt=""> </div>
+                <div class="newsletter-img">
+                    <img src="assets/img/Casa2.avif" alt="">
+                </div>
                 <div class="newsletter-content">
                     <h2>Suscríbete a nuestro newsletter</h2>
                     <p>Recibe nuevas propiedades antes que nadie.</p>
-                    <form class="newsletter-form"> <input type="email" placeholder="Tu correo electrónico"> <button
-                            type="submit" class="btn-primary">Suscribirme</button> </form>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico">
+                        <button type="submit" class="btn-primary">Suscribirme</button>
+                    </form>
                 </div>
             </div>
         </section>
-
 
     </main>
 
     <div data-component="footer"></div>
 
     <script src="assets/js/nav.js"></script>
-
     <script src="assets/js/footer.js"></script>
 
 </body>
