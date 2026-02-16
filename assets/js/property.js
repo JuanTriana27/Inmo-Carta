@@ -7,6 +7,12 @@ const propiedades = {
         precio: "$450.000",
         imagen: "../assets/img/Casa1.jpeg",
         whatsapp: "573008412521"
+    },
+    2: {
+        titulo: "Apartamento Moderno",
+        precio: "$20.000",
+        imagen: "../assets/img/Apartamento1.jpeg",
+        whatsapp: "573008412521"
     }
 };
 
